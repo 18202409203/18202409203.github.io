@@ -109,24 +109,24 @@
 
 
 
-  <meta name="description" content="Games                                              贪吃蛇                                           飞机大战                                           告白气球">
+  <meta name="description" content="Balloon                 .post-body {             height: 700px;         }         #ballDiv {             position: fixed;             top: 160px;             left: 0;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="学无止境">
-<meta property="og:url" content="https://18202409203.github.io/game/index.html">
+<meta property="og:url" content="https://18202409203.github.io/game/balloon.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Games                                              贪吃蛇                                           飞机大战                                           告白气球">
+<meta property="og:description" content="Balloon                 .post-body {             height: 700px;         }         #ballDiv {             position: fixed;             top: 160px;             left: 0;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T12:41:03.490Z">
+<meta property="og:updated_time" content="2019-03-13T12:40:20.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
-<meta name="twitter:description" content="Games                                              贪吃蛇                                           飞机大战                                           告白气球">
+<meta name="twitter:description" content="Balloon                 .post-body {             height: 700px;         }         #ballDiv {             position: fixed;             top: 160px;             left: 0;">
 
 
 
 
 
 
-  <link rel="canonical" href="https://18202409203.github.io/game/"/>
+  <link rel="canonical" href="https://18202409203.github.io/game/balloon.html"/>
 
 
 
@@ -416,30 +416,199 @@
         
           <!DOCTYPE html>
 <html lang="en">
+
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Games</title>
+    <title>Balloon</title>
 </head>
+
 <body>
-    <section>
-        <ul>
-            <li>
-                <a href="gluttonousSnake.html">贪吃蛇</a>
-            </li>
-            <li>
-                <a href="planeBattle.html">飞机大战</a>
-            </li>
-            <li>
-                <a href="balloon.html">告白气球</a>
-            </li>
-            <li>
-                <a>俄罗斯方块(开发中...)</a>
-            </li>
-        </ul>
-    </section>
+    <style>
+        .post-body {
+            height: 700px;
+        }
+        #ballDiv {
+            position: fixed;
+            top: 160px;
+            left: 0;
+            border: 1px solid #c9c9c9;
+            z-index: -1;
+        }
+        .balloon {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #f3778d;
+            border-radius: 50% 50% 10% 50%;
+            transform: rotate(45deg);
+            box-shadow: 1px 1px 20px 20px pink inset;
+            z-index: -10
+        }
+
+        .balloon:after {
+            width: 20px;
+            height: 20px;
+            content: "";
+            display: block;
+            background: 0 0;
+            position: absolute;
+            right: -15px;
+            bottom: -15px;
+            border-left: 5px solid pink;
+            border-top: 5px solid pink
+        }
+
+        .balloon:before {
+            width: 2px;
+            height: 50px;
+            content: "";
+            display: block;
+            background: pink;
+            position: absolute;
+            right: -10px;
+            top: 100%;
+            margin-top: -16px;
+            transform: rotate(-45deg)
+        }
+    </style>
+    <div style="background: black;height: 160px; width: 800px;position: fixed; top: 0;color: white;font-size: 60px;line-height: 70px;">
+        <p>
+            最高连击：<span id="maxDoubleHit">0</span>
+        </p>
+        <p>
+            本次游戏：<span id="currentDoubleHit">0</span>
+        </p>
+    </div>
+    <div id="ballDiv"></div>
+    <div style="background: black;height: 160px; width: 800px;position: fixed; top: 600px;color: white;line-height: 80px;font-size: 60px;">
+        <span>你说你有点难追</span><br>
+        <span style="float: right;">想让我知难而退</span>
+    </div>
+    <script>
+        var maxDoubleHit = localStorage.getItem('eliminateCount') || 0
+        var currentDoubleHit = 0
+        var bnElements = [];//存放所有气球
+        var random = Math.random;//随机函数
+        // var wW = window.innerWidth;//窗口宽度
+        // var wH = window.innerHeight;//窗口高度
+        var wW = 800;//窗口宽度
+        var wH = 500;//窗口高度
+        var ballW = 100;//气球的宽度
+        var ballH = 160;//气球的高度
+        var minSpeed = 3;//最小速度，每次向上移动至少3px
+        var speedNum = 8;//速度的定量
+        var defBnNumber = 8;//初始化气球
+        var moveTimer;
+        var isEnd = false;
+        var jindex = 1;
+        var ballDiv = document.getElementById('ballDiv');
+        ballDiv.style.width = wW + "px";
+        ballDiv.style.height = wH + "px";
+        //初始化
+        init(defBnNumber);
+        //移动
+        move();
+        //绑定单击事件
+        bindClick();
+        //游戏信息
+        document.getElementById('maxDoubleHit').innerText = maxDoubleHit
+        function record() {
+            if (isEnd) {
+                clearTimeout(moveTimer);
+                bnElements = [];
+                document.getElementById('gamemsg').style.display = 'block';
+            }else {
+                init(1);
+                document.getElementById('currentDoubleHit').innerText = ++currentDoubleHit;
+                if (currentDoubleHit > maxDoubleHit) {
+                    document.getElementById('maxDoubleHit').innerText = currentDoubleHit;
+                    localStorage.setItem('eliminateCount', currentDoubleHit)
+                }
+            }
+        }
+        //初始化气球
+        function init(num) {
+            //创建一个虚拟文档节点
+            var docFragment = document.createDocumentFragment();
+            for (var i = 0; i < num; i++) {
+                var bnElement = document.createElement('div');
+                bnElement.className = 'balloon';
+                //速度随机，限定最小值
+                var speed = Math.max(minSpeed, ~~(random() * speedNum));
+                bnElement.setAttribute('speed', speed);//~~取整 移动速度
+                bnElement.setAttribute('id', 'ball-' + jindex++);
+                //分散排列
+                var x = (~~(random() * wW)) - ballW;
+                x = Math.max(0, x);
+                bnElement.style.left = x + 'px';
+                bnElement.style.top = wH + 'px';//露一点出来
+                //1.先将创建的气球放入创建的虚拟文档节点
+                docFragment.appendChild(bnElement);
+                bnElements.push(bnElement);
+            }
+            //2.将虚拟文档节点添加到body中
+            ballDiv.appendChild(docFragment);
+        }
+        function move() {
+            var bl = bnElements.length
+            for (var i = 0; i < bl; i++) {
+                var currentElement = bnElements[i]
+                if (currentElement == null) {
+                    continue;
+                }
+                var offsetTop = currentElement.offsetTop;
+                if (offsetTop > -ballH) {//窗口中
+                    var speed = currentElement.getAttribute('speed');
+                    currentElement.style.top = offsetTop - speed + 'px'
+                }
+                else {
+                    //移除dom节点
+                    ballDiv.removeChild(currentElement);
+                    //移除数组中
+                    bnElements.splice(i,1);
+                    init(1);
+                    // isEnd = true;
+                    // record();
+                }
+            }
+            moveTimer = setTimeout(move, 1000 / 30);
+        }
+
+        function bindClick() {
+            ballDiv.addEventListener('click', clickFunc, false);
+            function clickFunc(e) {
+                if (!isEnd && e.target.className == 'balloon') {
+                    boom.call(e.target, function () {
+                        record();
+                    });
+                }
+            }
+        }
+
+        function boom(callback) {
+            //var that=this; //替换了上下文，但是没有使用this的意义.
+            var speed = this.getAttribute('speed');
+            this.timer = setInterval(function () {
+                // 被点到的气球慢慢减速，褪色，最终消失
+                this.style.opacity = 0.1 * (speed--)
+                if (speed < 1) {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                        bnElements.splice(bnElements.lastIndexOf(this), 1);
+                        callback && callback();
+                    }
+                    clearInterval(this.timer);
+                }
+            }.bind(this), 30);
+        }
+
+    </script>
 </body>
+
 </html>
         
       </div>
