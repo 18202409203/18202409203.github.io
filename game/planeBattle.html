@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/zpj.png?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/zpj.png?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学无止境">
+<meta property="og:url" content="https://18202409203.github.io/game/planeBattle.html">
+<meta property="og:site_name" content="学无止境">
+<meta property="og:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-13T09:29:36.594Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学无止境">
+<meta name="twitter:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
+
+
+
+
+
+
+  <link rel="canonical" href="https://18202409203.github.io/game/planeBattle.html"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | 学无止境</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学无止境</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-game menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/game/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br/>游戏</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+  
+
+  
+
+  <a href="https://github.com/18202409203" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" style="fill: #222; color: #fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+
+</h1>
+
+<div class="post-meta">
+  
+  
+
+
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <!doctype html>
+<html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <title>Plane Battle</title>
+    </head>
+    <style type="text/css">
+    #background {
+        background: #f5f5f5;
+        border: 1px solid black;
+        height: 900px;
+        width: 900px;
+        top: 0px;
+        left: 0px;
+        position: absolute;
+    }
+    #illustration {
+        position: absolute;
+        left: 920px;
+    }
+    .element {
+        background: url(http://bpic.588ku.com/element_origin_min_pic/17/02/27/0a41cffd5fb3e8ce6461357c3c9423c1.jpg) no-repeat;
+        height: 480px;
+        width: 650px;
+        position:absolute;
+    }
+    .plane-alive {
+        clip: rect(410px 370px 470px 280px);
+    }
+    .plane-die {
+        background: url(https://bpic.588ku.com/element_pic/00/16/10/1357ff6c4d743c3.jpg!/fw/254/quality/90/unsharp/true/compress/true) no-repeat;
+        height: 255px;
+        width: 254px;
+        position: absolute;
+    }
+    .bullet {
+        clip: rect(380px 330px 400px 320px);
+    }
+    .enemy-alive {
+        clip: rect(260px 370px 350px 280px);
+    }
+    .enemy-die {
+        background: url(https://bpic.588ku.com/element_pic/16/12/06/7f9be0c937678ea3c2ef1c043ce128b7.jpg!/fw/254/quality/90/unsharp/true/compress/true) no-repeat #f7f7f7;
+        height: 255px;
+        width: 255px;
+        position: absolute;
+        clip: rect(90px 170px 180px 80px);
+    }
+    .gameover {
+        background: url(https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1522428500&di=fb2936a40d6553805633cd64caa8f7ae&src=http://img.yanj.cn/store/goods/2969/2969_a875864c2e5b713f6868a1d3a5ae3961.jpg_mid.jpg) no-repeat center;
+        background-size: contain;
+        height: 900px;
+        width: 900px;
+        position: absolute;
+    }
+    .button{
+        width: 210px;
+        height: 100px;
+        font-size: 30px;
+    }
+    .post-body {
+        zoom: 0.6;
+    }
+    </style>
+
+    <body>
+        <div id="background">
+            <!-- <button onclick="bulletUp()">go</button> -->
+            <div id="enemy-die" class="enemy-die element"></div>
+            <div id="enemy-alive" class="enemy-alive element" style="top: -1000px; left: -1000px;"></div>
+            <div id="bullet" class="bullet element" style="top: -1400px; left: -350px;"></div>
+            <div id="plane-alive" class="plane-alive element" style="top: -410px; left: -280px;"></div>
+            <div id="gameover" class="gameover" style="display: none;"></div>
+            <!-- <div class="plane-die" style="top: 70px; left: 300px;"></div> -->
+            <!-- <audio hidden="true" style="opacity: 0;" src="./background.mp3" loop controls autoplay="true"></audio> -->
+        </div>
+        <div id="illustration">
+            <span>外星人入侵地球，保卫地球的重担交给你了，骚年！</span><br>
+            <span><span style="color: red">A左D右</span>移动战机<br>
+            <span style="color: red">W射击</span>消灭他们！</span><br>
+            <span style="color: red">回车Enter重新开始</span><br>
+            <span>注意：地球资源紧缺，所以屏幕上<span style="color: red">只能有一发子弹！</span></span><br>
+            <span>不要让外星人撞到你！</span><br>
+            <span>不要有超过3个外星人进入地球！</span><br>
+            <span>Good Luck！</span><br>
+            <div style="float: left;font-size: 30px;padding: 10px;">
+                <span>已消灭:  </span><input id="score" type="text" readonly value="0" style="width: 100px;height: 30px;font-size: 30px;">
+            </div>
+            <div style="float: left;font-size: 30px;padding: 10px;">
+                <span>已进入:  </span><input id="aliens" type="text" readonly value="0" style="width: 100px;height: 30px;font-size: 30px;">
+            </div>
+            <span></span>
+        </div>
+            <script>
+                // 全局div块
+                var planeAlive = document.getElementById('plane-alive')
+                var enemyAlive = document.getElementById('enemy-alive')
+                var enemyDie = document.getElementById('enemy-die')
+                var bullet = document.getElementById('bullet')
+                var gameover = document.getElementById('gameover')
+                var scoreDiv = document.getElementById('score')
+                var aliensDiv = document.getElementById('aliens')
+                // 初始化左上角位置
+                const enemyDieTop = -90
+                const enemyDieLeft = -80
+                const enemyAliveTop = -255
+                const enemyAliveLeft = -280
+                const bulletTop = -380
+                const bulletLeft = -320
+                const planeAliveTop = -410
+                const planeAliveLeft = -280
+                const planeAliveRight = 530
+                // 中心点到左上点
+                const enemyAliveCenterTop = 45
+                const enemyAliveCenterLeft = 55
+                const planeAliveCenterTop = 30
+                const planeAliveCenterLeft = 45
+                const bulletCenterTop = -10
+                const bulletCenterLeft = -5
+                // 位置
+                var planePositionTop = 810
+                var planePositionLeft = 810
+                // 敌人长度
+                const enemyLength = 90
+                var enemySpeed = 1000
+                // 飞机长度
+                const planeLength = 90
+                // 子弹长度
+                const bulletLength = 20 // 弹长
+                var bulletSpeed = 100 // 子弹时间间隔
+                // 得分
+                var score = 0
+                var aliens = 0
+                // ----------------------------------------------------------------//
+                // 初始化一发子弹
+                var initBullet = function () {
+                    bullet.style.top = bulletTop + bulletCenterTop + planePositionTop + planeAliveCenterTop + 'px'
+                    bullet.style.left = bulletLeft + bulletCenterLeft + planePositionLeft + planeAliveCenterLeft + 'px'
+                }
+                // 发射子弹
+                var intervalBulletUp = null
+                var shoot = function () {
+                    // console.log('shoot')
+                    if (intervalBulletUp === null) {
+                        initBullet()
+                        intervalBulletUp = setInterval(bulletUp, bulletSpeed)
+                    }
+                }
+                // 子弹上升以及出界逻辑控制
+                var bulletUp = function () {
+                    let bulletTp = Number(bullet.style.top.slice(0, -2))
+                    if (bulletTp - bulletTop < -bulletLength) {
+                        clearInterval(intervalBulletUp)
+                        intervalBulletUp = null
+                        bullet.style.top = -1000 + 'px';
+                    } else {
+                        bulletTp = bulletTp - bulletLength
+                        bullet.style.top = bulletTp + 'px'
+                    }
+                }
+                // -------------------------------------------------------------------- //
+                // 初始化一个敌人
+                var initEnemy = function () {
+                    enemyAlive.style.top = enemyAliveTop +  'px'
+                    enemyAlive.style.left = enemyAliveLeft + enemyInitLeft() + 'px'
+                }
+                // 敌人下降
+                var intervalEnemyDown = null
+                var enemyDown = function () {
+                    let enemyTp = Number(enemyAlive.style.top.slice(0, -2))
+                    let enemyLft = Number(enemyAlive.style.left.slice(0, -2))
+                    // console.log(enemyTp - enemyAliveTop)
+                    // console.log(enemyLft)
+                    if (enemyTp - enemyAliveTop > 750) {
+                        clearInterval(intervalEnemyDown)
+                        intervalEnemyDown = null
+                        safe()
+                    } else {
+                        enemyTp = enemyTp + enemyLength/2
+                        enemyAlive.style.top = enemyTp + 'px'
+                    }
+                }
+                var attack = function () {
+                    if (intervalEnemyDown === null) {
+                        initEnemy()
+                        intervalEnemyDown = setInterval(enemyDown, enemySpeed)
+                    }
+                }
+                // 敌人左右活动
+                var enemyInitLeft = function () {
+                    let rand = Math.floor(Math.random() * 10)
+                    return rand * enemyLength
+                }
+                // ------------------------------------------------------------------------ //
+                // 开始游戏
+                var start = function () {
+                    score = 0
+                    scoreDiv.value = score
+                    aliens = 0
+                    aliensDiv.value = aliens
+                    gameover.style.display = 'none'
+                    enemyDieDisappear()
+                    planeAlive.style.top = planeAliveTop + planePositionTop + 'px'
+                    planeAlive.style.left = planeAliveLeft + planePositionLeft + 'px'
+                    attack()
+                }
+                // 控制飞机左右移动
+                var planeLeft = function () {
+                    let planeAliveLft = Number(planeAlive.style.left.slice(0, -2))
+                    if (planeAliveLft - planeAliveLeft > 0) {
+                        planePositionLeft = planePositionLeft - planeLength
+                        planeAliveLft = planeAliveLft - planeLength
+                        planeAlive.style.left = planeAliveLft + 'px'
+                    }
+                }
+                var planeRight = function () {
+                    let planeAliveLft = Number(planeAlive.style.left.slice(0, -2))
+                    if (planeAliveLft - planeAliveRight < 0) {
+                        planePositionLeft = planePositionLeft + planeLength
+                        planeAliveLft = planeAliveLft + planeLength
+                        planeAlive.style.left = planeAliveLft + 'px'
+                    }
+                }
+                // 敌人消失
+                var enemyDisappear = function () {
+                    enemyAlive.style.top = -1000 + 'px'
+                    enemyAlive.style.left = -1000 + 'px'
+                }
+                // 敌人爆炸图标消失
+                var enemyDieDisappear = function () {
+                    enemyDie.style.top = -1000 + 'px'
+                    enemyDie.style.left = -1000 + 'px'
+                }
+                // 敌人落底
+                var safe = function () {
+                    enemyDisappear()
+                    attack()
+                    aliens ++
+                    aliensDiv.value = aliens
+                    if (aliens === 3) {
+                        gameOver()
+                    }
+                }
+                // 敌人与飞机相撞
+                var gameOver = function () {
+                    enemyDisappear()
+                    clearInterval(intervalEnemyDown)
+                    intervalEnemyDown = null
+                    gameover.style.display = 'inline'
+                }
+                // 敌人与子弹相撞
+                var enemyIsDead = function () {
+                    let enemyTp = Number(enemyAlive.style.top.slice(0, -2))
+                    let enemyLft = Number(enemyAlive.style.left.slice(0, -2))
+                    // console.log(enemyTp, enemyLft)
+                    enemyDie.style.top = enemyDieTop + enemyTp - enemyAliveTop + 'px'
+                    enemyDie.style.left = enemyDieLeft + enemyLft - enemyAliveLeft + 'px'
+                    clearInterval(intervalEnemyDown)
+                    intervalEnemyDown = null
+                    enemyDisappear()
+                    attack()
+                    setTimeout(enemyDieDisappear, 100)
+                    score ++
+                    scoreDiv.value = score
+                }
+                // 判断子弹与敌人相撞
+                var judgeEnemyIsDie = function () {
+                    let enemyTp = Number(enemyAlive.style.top.slice(0, -2))
+                    let enemyLft = Number(enemyAlive.style.left.slice(0, -2))
+                    let bulletTp = Number(bullet.style.top.slice(0, -2))
+                    let bulletLft = Number(bullet.style.left.slice(0, -2))
+                    let scopeTpSmall = enemyTp - enemyAliveTop + enemyAliveCenterTop - 45
+                    let scopeTpLarge = enemyTp - enemyAliveTop + enemyAliveCenterTop + 45
+                    let scopeLftSmall = enemyLft - enemyAliveLeft + enemyAliveCenterLeft - 45
+                    let scopeLftLarge = enemyLft - enemyAliveLeft + enemyAliveCenterLeft + 45
+                    if (bulletLft - bulletLeft + bulletCenterLeft < scopeLftLarge && bulletLft - bulletLeft + bulletCenterLeft > scopeLftSmall && bulletTp - bulletTop + bulletCenterTop < scopeTpLarge && bulletTp - bulletTop + bulletCenterTop > scopeTpSmall) {
+                        enemyIsDead()
+                    }
+                }
+                // 判断飞机与敌人相撞
+                var judgeRush = function () {
+                    let enemyTp = Number(enemyAlive.style.top.slice(0, -2))
+                    let enemyLft = Number(enemyAlive.style.left.slice(0, -2))
+                    let planeTp = Number(planeAlive.style.top.slice(0, -2))
+                    let planeLft = Number(planeAlive.style.left.slice(0, -2))
+                    let scopeTpSmall = enemyTp - enemyAliveTop + enemyAliveCenterTop - 45
+                    let scopeTpLarge = enemyTp - enemyAliveTop + enemyAliveCenterTop + 45
+                    let scopeLftSmall = enemyLft - enemyAliveLeft + enemyAliveCenterLeft - 45
+                    let scopeLftLarge = enemyLft - enemyAliveLeft + enemyAliveCenterLeft + 45
+                    if (planeLft - planeAliveLeft + planeAliveCenterLeft < scopeLftLarge && planeLft - planeAliveLeft + planeAliveCenterLeft > scopeLftSmall && planeTp - planeAliveTop + planeAliveCenterTop < scopeTpLarge && planeTp - planeAliveTop + planeAliveCenterTop > scopeTpSmall) {
+                        gameOver()
+                    }
+                }
+                // 主程序
+                start ()
+                setInterval(judgeEnemyIsDie, 100)
+                setInterval(judgeRush, 100)
+
+                // 监听方向箭头
+                document.onkeydown = function(){
+                    if(window.event){
+                        arrow = window.event.keyCode;
+                    }else{
+                        arrow = event.keyCode;
+                    }
+                    operations(arrow);
+                }
+                function operations(arrow){
+                        switch(arrow){
+                            case 13:
+                            start(); // enter
+                            break;
+                            case 87:
+                            shoot(); // W
+                            break;
+                            case 65:
+                            planeLeft(); // A left
+                            break;
+                            case 68:
+                            planeRight(); // D right
+                            break;
+                        }
+                }
+            </script>
+    </body>
+</html>
+        
+      </div>
+      
+      
+      
+    </div>
+    
+
+
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.png"
+                alt="等时钟成长"/>
+            
+              <p class="site-author-name" itemprop="name">等时钟成长</p>
+              <div class="site-description motion-element" itemprop="description">不患无位，患所以立</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/18202409203" title="GitHub &rarr; https://github.com/18202409203" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">等时钟成长</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='200' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
+
+  
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+</html>
