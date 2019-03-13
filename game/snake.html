@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T07:22:32.979Z">
+<meta property="og:updated_time" content="2019-03-13T07:49:18.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
 <meta name="twitter:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
@@ -433,30 +433,26 @@
         font-size: 14px;
     }
     #stage {
-        left: calc(50% - 250px);
-        width: 500px;
-        height: 500px;
-        background: #c9c9c9;
+        /* background: #c9c9c9; */
+        border: 1px solid #c9c9c9;
         position: absolute;
     }
     #gameover {
-        left: calc(50% - 250px);
-        width: 500px;
+        width: 400px;
         height: 100px;
         font-weight: bold;
-        font-size: 80px;
+        font-size: 64px;
         line-height: 100px;
         top: 200px;
         position: absolute;
     }
     #buttons {
         position: absolute;
-        top: 510px;
-        left: calc(50% - 250px);
+        top: 410px;
     }
     #operators {
         position: absolute;
-        top: 510px;
+        top: 410px;
         left: 50%;
     }
     #level {
@@ -464,6 +460,11 @@
         margin: 5px;
         border: 1px solid #c9c9c9;
         border-radius: 5px;
+    }
+    @media(min-width: 600px){
+        #stage, #gameover, #stage, #buttons {
+            left: calc(50% - 200px);
+        }
     }
 </style>
 <body>
@@ -496,9 +497,9 @@
     </aside>
 
     <script>
-    const WIDTH = 500;
-    const HEIGHT = 500;
-    const BACKGROUND_COLOR = "#C9C9C9";
+    const WIDTH = 400;
+    const HEIGHT = 400;
+    // const BACKGROUND_COLOR = "#C9C9C9";
     const SNAKE_COLOR = "#50bfff";
     const FOOD_COLOR = "#ff4949";
     const CELL_NUM_X = 25;
@@ -513,10 +514,11 @@
     function Stage(frame){
         this.width = WIDTH;
         this.height = HEIGHT;
-        this.backgroundColor = BACKGROUND_COLOR;
-        this.position = "absolute";
+        // this.backgroundColor = BACKGROUND_COLOR;
 
         this._stage = frame;
+        this._stage.style.width = this.width + "px";
+        this._stage.style.height = this.height + "px";
     }
 
     // 方块
