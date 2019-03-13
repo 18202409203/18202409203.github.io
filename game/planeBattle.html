@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T09:29:36.594Z">
+<meta property="og:updated_time" content="2019-03-13T09:59:20.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
 <meta name="twitter:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
@@ -474,7 +474,10 @@
         font-size: 30px;
     }
     .post-body {
-        zoom: 0.6;
+        /* zoom: 0.6; */
+        transform: scale(0.8)!important; 
+        transform-origin: 0 0;
+        height: 700px;
     }
     </style>
 
@@ -712,11 +715,12 @@
                 setInterval(judgeRush, 100)
 
                 // 监听方向箭头
-                document.onkeydown = function(){
+                document.onkeydown = function(e){
                     if(window.event){
                         arrow = window.event.keyCode;
                     }else{
-                        arrow = event.keyCode;
+                        // 兼容Firefox
+                        arrow = e.keyCode;
                     }
                     operations(arrow);
                 }
