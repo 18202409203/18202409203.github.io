@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T07:57:43.699Z">
+<meta property="og:updated_time" content="2019-03-13T08:16:26.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
 <meta name="twitter:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
@@ -438,22 +438,13 @@
         position: absolute;
     }
     #gameover {
-        width: 400px;
+        width: 3500px;
         height: 100px;
         font-weight: bold;
-        font-size: 64px;
+        font-size: 56px;
         line-height: 100px;
-        top: 200px;
+        top: 125px;
         position: absolute;
-    }
-    #buttons {
-        position: absolute;
-        top: 410px;
-    }
-    #operators {
-        position: absolute;
-        top: 410px;
-        left: 50%;
     }
     #level {
         padding: 5px;
@@ -461,10 +452,18 @@
         border: 1px solid #c9c9c9;
         border-radius: 5px;
     }
-    @media(min-width: 600px){
-        #stage, #gameover, #stage, #buttons {
-            left: calc(50% - 200px);
-        }
+    #buttons, #operators {
+        position: absolute;
+        top: 360px;
+    }
+    #operators {
+        right: calc(50% - 175px);
+    }
+    #stage, #gameover, #stage, #buttons {
+        left: calc(50% - 175px);
+    }
+    .table-container {
+        margin: 0;
     }
 </style>
 <body>
@@ -481,7 +480,6 @@
             <tr>
                 <td></td>
                 <td><button class="button" onclick="snake.setDirection(38)">上</button></td>
-                <td></td>
             </tr>
             <tr>
                 <td><button class="button" onclick="snake.setDirection(37)">左</button></td>
@@ -492,8 +490,8 @@
     </aside>
 
     <script>
-    const WIDTH = 400;
-    const HEIGHT = 400;
+    const WIDTH = 350;
+    const HEIGHT = 350;
     // const BACKGROUND_COLOR = "#C9C9C9";
     const SNAKE_COLOR = "#50bfff";
     const FOOD_COLOR = "#ff4949";
