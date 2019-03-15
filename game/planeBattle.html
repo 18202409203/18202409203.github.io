@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="学无止境">
 <meta property="og:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T09:59:20.786Z">
+<meta property="og:updated_time" content="2019-03-13T14:00:48.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
 <meta name="twitter:description" content="Plane Battle               #background {         background: #f5f5f5;         border: 1px solid black;         height: 900px;         width: 900px;         top: 0px;         left: 0px;">
@@ -498,6 +498,7 @@
             <span style="color: red">W射击</span>消灭他们！</span><br>
             <span style="color: red">回车Enter重新开始</span><br>
             <span>注意：地球资源紧缺，所以屏幕上<span style="color: red">只能有一发子弹！</span></span><br>
+            <span>敌人运动速度会越来越快，你的弹速也会提升，这在你消灭了20个敌人的时候达到最值</span>
             <span>不要让外星人撞到你！</span><br>
             <span>不要有超过3个外星人进入地球！</span><br>
             <span>Good Luck！</span><br>
@@ -680,6 +681,12 @@
                     setTimeout(enemyDieDisappear, 100)
                     score ++
                     scoreDiv.value = score
+                    if(enemySpeed > 100){
+                        enemySpeed -= 50;
+                    }
+                    if(bulletSpeed > 10){
+                        bulletSpeed -= 5;
+                    }
                 }
                 // 判断子弹与敌人相撞
                 var judgeEnemyIsDie = function () {
@@ -711,8 +718,8 @@
                 }
                 // 主程序
                 start ()
-                setInterval(judgeEnemyIsDie, 100)
-                setInterval(judgeRush, 100)
+                setInterval(judgeEnemyIsDie, 10)
+                setInterval(judgeRush, 10)
 
                 // 监听方向箭头
                 document.onkeydown = function(e){
@@ -804,7 +811,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -820,6 +827,8 @@
                     
                   
                     
+                    
+                      
                     
                       
                     
@@ -850,7 +859,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
