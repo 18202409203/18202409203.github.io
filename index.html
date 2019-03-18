@@ -378,6 +378,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://18202409203.github.io/2019/03/18/相关性矩阵可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="等时钟成长">
+      <meta itemprop="description" content="不患无位，患所以立">
+      <meta itemprop="image" content="/images/m.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学无止境">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/18/相关性矩阵可视化/" class="post-title-link" itemprop="url">相关性矩阵可视化</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 23:02:50 / 修改时间：23:53:05" itemprop="dateCreated datePublished" datetime="2019-03-18T23:02:50+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/可视化/" itemprop="url" rel="index"><span itemprop="name">可视化</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>说明</strong>：本文所调用代码为<code>relationMatrix.html</code>和<code>relationMatrix.js</code>, 可在本页打开控制台查看或下载使用。</p>
+<hr>
+<iframe width="100%" height="700px" frameborder="0" sameless src="/js/src/relationMatrix/relationMatrix.html"><br></iframe>
+
+<hr>
+<p>使用D3.js编写了<code>relationMatrix.js</code>，该文件提供一个函数<code>relationMatrix</code>, 函数需要传入一个参数<code>options</code>, 默认配置如下：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">options = &#123;</span><br><span class="line">    margin: &#123; <span class="attr">top</span>: <span class="number">50</span>, <span class="attr">right</span>: <span class="number">50</span>, <span class="attr">bottom</span>: <span class="number">100</span>, <span class="attr">left</span>: <span class="number">100</span> &#125;, <span class="comment">// 边缘</span></span><br><span class="line">    data: [],  <span class="comment">// 数据，二维数组的格式</span></span><br><span class="line">    container: <span class="string">"canvas"</span>, <span class="comment">// 需要绘入图表的DOM元素的ID</span></span><br><span class="line">    labels: [], <span class="comment">// 标签数组</span></span><br><span class="line">    max: &#123;</span><br><span class="line">        color: <span class="string">"red"</span>, <span class="comment">// 最大颜色</span></span><br><span class="line">        value: <span class="number">1</span> <span class="comment">// 最大值</span></span><br><span class="line">    &#125;,</span><br><span class="line">    min: &#123;</span><br><span class="line">        color: <span class="string">"blue"</span> <span class="comment">// 最小颜色</span></span><br><span class="line">        value: <span class="number">-1</span> <span class="comment">// 最小值</span></span><br><span class="line">    &#125;,</span><br><span class="line">    cellSize: <span class="number">60</span>, <span class="comment">// 每个格子的大小</span></span><br><span class="line">    isSymmetry: <span class="literal">true</span> <span class="comment">// 是否对称</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在自己的页面引入<code>relationMatrix.js</code>后，一个调用的例子如下：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test Data</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeArray</span>(<span class="params">length</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i ++)&#123;</span><br><span class="line">        <span class="keyword">let</span> array_i = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; length; j ++)&#123;</span><br><span class="line">            array_i.push(<span class="built_in">Math</span>.random() * <span class="number">2</span> - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        result.push(array_i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeLabel</span>(<span class="params">length</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i ++)&#123;</span><br><span class="line">        result.push(<span class="built_in">Math</span>.random().toString(<span class="number">36</span>).slice(<span class="number">-3</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    margin: &#123; <span class="attr">top</span>: <span class="number">50</span>, <span class="attr">right</span>: <span class="number">50</span>, <span class="attr">bottom</span>: <span class="number">100</span>, <span class="attr">left</span>: <span class="number">100</span> &#125;,</span><br><span class="line">    data: [],</span><br><span class="line">    container: <span class="string">"canvas"</span>,</span><br><span class="line">    labels: [],</span><br><span class="line">    max: &#123;</span><br><span class="line">        value: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    min: &#123;</span><br><span class="line">        value: <span class="number">-1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    cellSize: <span class="number">60</span>,</span><br><span class="line">    isSymmetry: <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">paint</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    options.data = makeArray(num);</span><br><span class="line">    options.labels = makeLabel(num);</span><br><span class="line">    relationMatrix(options);</span><br><span class="line">&#125;</span><br><span class="line">paint();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://18202409203.github.io/2019/03/14/嘉峪关故事/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1086,7 +1255,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1109,7 +1278,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1136,7 +1305,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
