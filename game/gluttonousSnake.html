@@ -109,17 +109,17 @@
 
 
 
-  <meta name="description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
+  <meta name="description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding:">
 <meta property="og:type" content="website">
 <meta property="og:title" content="学无止境">
 <meta property="og:url" content="https://18202409203.github.io/game/gluttonousSnake.html">
 <meta property="og:site_name" content="学无止境">
-<meta property="og:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
+<meta property="og:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-13T08:20:50.998Z">
+<meta property="og:updated_time" content="2019-05-20T12:24:33.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学无止境">
-<meta name="twitter:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding: 5">
+<meta name="twitter:description" content="Snake       .button {         background: #50bfff;         border-radius: 5px;         border: 1px solid #50bfff;         color: #fff;         cursor: pointer;         padding:">
 
 
 
@@ -416,6 +416,7 @@
         
           <!DOCTYPE html>
 <html lang="en">
+
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -432,11 +433,13 @@
         padding: 5px 10px;
         font-size: 14px;
     }
+
     #stage {
         /* background: #c9c9c9; */
         border: 1px solid #c9c9c9;
         position: absolute;
     }
+
     #gameover {
         width: 350px;
         height: 100px;
@@ -446,37 +449,51 @@
         top: 125px;
         position: absolute;
     }
+
     #level {
         padding: 5px;
         margin: 5px;
         border: 1px solid #c9c9c9;
         border-radius: 5px;
     }
-    #buttons, #operators {
+
+    #buttons,
+    #operators {
         position: absolute;
         top: 360px;
     }
+
     #operators {
         right: calc(50% - 175px);
     }
-    #stage, #gameover, #stage, #buttons {
+
+    #stage,
+    #gameover,
+    #stage,
+    #buttons {
         left: calc(50% - 175px);
     }
+
     .table-container {
         margin: 0;
     }
 </style>
+
 <body>
     <div id="stage"></div>
     <div id="gameover"></div>
     <section id="buttons">
-            <button class="button" onclick="Start(speed)">开始</button>
-            <button class="button" onclick="Pause()">暂停</button>
-            <button class="button" onclick="GameInit()">重玩</button>
-            <section id="level"></section>
+        <button class="button" onclick="Start(speed)">开始</button>
+        <button class="button" onclick="Pause()">暂停</button>
+        <button class="button" onclick="GameInit()">重玩</button>
+        <section id="level"></section>
     </section>
     <aside id="operators">
-        <table>
+        <span>
+            电脑操作：<br>
+            键盘方向箭头控制方向
+        </span>
+        <!-- <table>
             <tr>
                 <td></td>
                 <td><button class="button" onclick="snake.setDirection(38)">上</button></td>
@@ -486,239 +503,253 @@
                 <td><button class="button" onclick="snake.setDirection(40)">下</button></td>
                 <td><button class="button" onclick="snake.setDirection(39)">右</button></td>
             </tr>
-        </table>
+        </table> -->
     </aside>
 
     <script>
-    const WIDTH = 350;
-    const HEIGHT = 350;
-    // const BACKGROUND_COLOR = "#C9C9C9";
-    const SNAKE_COLOR = "#50bfff";
-    const FOOD_COLOR = "#ff4949";
-    const CELL_NUM_X = 25;
-    const CELL_NUM_Y = 25;
-    const SNAKE_LENGTH_INITIAL = 3;
-    const LEVEL_PACE = 4; // 增加n长度就升级
-    const SPEED_INIT = 200; // 初始速度ms
-    const SPEED_PACE = 20; // 每关加速ms
-    const LEVEL_MAX = 9; // 最大关卡
+        const WIDTH = 350;
+        const HEIGHT = 350;
+        // const BACKGROUND_COLOR = "#C9C9C9";
+        const SNAKE_COLOR = "#50bfff";
+        const FOOD_COLOR = "#ff4949";
+        const CELL_NUM_X = 25;
+        const CELL_NUM_Y = 25;
+        const SNAKE_LENGTH_INITIAL = 3;
+        const LEVEL_PACE = 4; // 增加n长度就升级
+        const SPEED_INIT = 200; // 初始速度ms
+        const SPEED_PACE = 20; // 每关加速ms
+        const LEVEL_MAX = 9; // 最大关卡
 
-    // 舞台
-    function Stage(frame){
-        this.width = WIDTH;
-        this.height = HEIGHT;
-        // this.backgroundColor = BACKGROUND_COLOR;
+        // 舞台
+        function Stage(frame) {
+            this.width = WIDTH;
+            this.height = HEIGHT;
+            // this.backgroundColor = BACKGROUND_COLOR;
 
-        this._stage = frame;
-        this._stage.style.width = this.width + "px";
-        this._stage.style.height = this.height + "px";
-    }
+            this._stage = frame;
+            this._stage.style.width = this.width + "px";
+            this._stage.style.height = this.height + "px";
+        }
 
-    // 方块
-    function Cell(x, y, c, t){
-        // Position(x,y) Color Text
-        this.width = WIDTH / CELL_NUM_X;
-        this.height = HEIGHT / CELL_NUM_Y;
-        this.position = "absolute";
-        this.color = c || 'white';
-        this.x = x || 0;
-        this.y = y || 0;
-        this.text = t || ""
-        this._cell = null;
+        // 方块
+        function Cell(x, y, c, t) {
+            // Position(x,y) Color Text
+            this.width = WIDTH / CELL_NUM_X;
+            this.height = HEIGHT / CELL_NUM_Y;
+            this.position = "absolute";
+            this.color = c || 'white';
+            this.x = x || 0;
+            this.y = y || 0;
+            this.text = t || ""
+            this._cell = null;
 
-        this.clear = function(){
-            if(this._cell !== null){
-                this._cell.parentNode.removeChild(this._cell);
-                this._cell = null;
+            this.clear = function () {
+                if (this._cell !== null) {
+                    this._cell.parentNode.removeChild(this._cell);
+                    this._cell = null;
+                }
+            }
+            this.show = function (_stage) {
+                // 第一次需要先创建元素
+                if (this._cell === null) {
+                    this._cell = document.createElement("div");
+                    this._cell.style.width = this.width + "px";
+                    this._cell.style.height = this.height + "px";
+                    this._cell.style.backgroundColor = this.color;
+                    this._cell.style.position = this.position;
+                    this._cell.style.border = "1px solid black";
+                    this._cell.innerHTML = this.text;
+                    this._cell.style.fontSize = "20px";
+                    // this._cell.style.fontWeight = "bold";
+                    this._cell.style.lineHeight = "20px";
+
+                    _stage.appendChild(this._cell);
+                }
+                // 设置元素位置
+                this._cell.style.left = this.x * this.width + "px";
+                this._cell.style.top = this.y * this.height + "px";
             }
         }
-        this.show = function(_stage){
-            // 第一次需要先创建元素
-            if(this._cell === null){
-                this._cell = document.createElement("div");
-                this._cell.style.width = this.width + "px";
-                this._cell.style.height = this.height + "px";
-                this._cell.style.backgroundColor = this.color;
-                this._cell.style.position = this.position;
-                this._cell.style.border = "1px solid black";
-                this._cell.innerHTML = this.text;
-                this._cell.style.fontSize = "20px";
-                // this._cell.style.fontWeight = "bold";
-                this._cell.style.lineHeight = "20px";
 
-                _stage.appendChild(this._cell);
+        // 食物
+        function Food() {
+            Cell.call(this, 0, 0, FOOD_COLOR);
+            let that = this;
+            // let superShow = this.show; // 方法2 借用父类方法作局部变量
+            this.show = function (_stage) {
+                // 设置元素位置
+                this.x = Math.floor(Math.random() * CELL_NUM_X);
+                this.y = Math.floor(Math.random() * CELL_NUM_Y);
+                // 调用父类方法，实现重写（扩展父类方法）
+                new Cell().show.call(that, _stage); // 方法1
+                // superShow.call(that, _stage); // 方法2
             }
-            // 设置元素位置
-            this._cell.style.left = this.x * this.width + "px";
-            this._cell.style.top = this.y * this.height + "px";
         }
-    }
+        Food.prototype = Object.create(Cell.prototype);
+        Food.prototype.constructor = Food;
 
-    // 食物
-    function Food(){
-        Cell.call(this, 0, 0, FOOD_COLOR);
-        let that = this;
-        // let superShow = this.show; // 方法2 借用父类方法作局部变量
-        this.show = function(_stage){
-            // 设置元素位置
-            this.x = Math.floor(Math.random() * CELL_NUM_X);
-            this.y = Math.floor(Math.random() * CELL_NUM_Y);
-            // 调用父类方法，实现重写（扩展父类方法）
-            new Cell().show.call(that, _stage); // 方法1
-            // superShow.call(that, _stage); // 方法2
-        }
-    }
-    Food.prototype = Object.create(Cell.prototype);
-    Food.prototype.constructor = Food;
-
-    // 蛇
-    function Snake(){
-        this.direction = 'horizontal';
-        this.pace = 1;
-        this.body = [new Cell(3, 0, SNAKE_COLOR), new Cell(2, 0, SNAKE_COLOR), new Cell(1, 0, SNAKE_COLOR)];
-
-        this.init = function(){
-            this.clear();
+        // 蛇
+        function Snake() {
             this.direction = 'horizontal';
             this.pace = 1;
             this.body = [new Cell(3, 0, SNAKE_COLOR), new Cell(2, 0, SNAKE_COLOR), new Cell(1, 0, SNAKE_COLOR)];
-        }
 
-        this.clear = function(){
-            for(let i = 0; i < this.body.length; i++){
-                this.body[i].clear();
+            this.init = function () {
+                this.clear();
+                this.direction = 'horizontal';
+                this.pace = 1;
+                this.body = [new Cell(3, 0, SNAKE_COLOR), new Cell(2, 0, SNAKE_COLOR), new Cell(1, 0, SNAKE_COLOR)];
             }
-        }
 
-        this.setDirection = function(arrow){
-            if(this.direction === 'horizontal'){
-                switch(arrow){
-                    case 38:
-                    this.pace = -1; // up
-                    this.direction = 'vertical';
-                    break;
-                    case 40:
-                    this.pace = 1; // down
-                    this.direction = 'vertical';
-                    break;
-                }
-            } else if(this.direction === 'vertical'){
-                switch(arrow){
-                    case 37:
-                    this.pace = -1; // left
-                    this.direction = 'horizontal';
-                    break;
-                    case 39:
-                    this.pace = 1; // right
-                    this.direction = 'horizontal';
-                    break;
+            this.clear = function () {
+                for (let i = 0; i < this.body.length; i++) {
+                    this.body[i].clear();
                 }
             }
-        }
 
-        this.show = function(_stage){
-            for(let i = 0; i < this.body.length; i++){
-                this.body[i].show(_stage);
+            this.setDirection = function (arrow, _stage, food) {
+                if (this.direction === 'horizontal') {
+                    switch (arrow) {
+                        case 38:
+                            this.pace = -1; // up
+                            this.direction = 'vertical';
+                            break;
+                        case 40:
+                            this.pace = 1; // down
+                            this.direction = 'vertical';
+                            break;
+                    }
+                } else if (this.direction === 'vertical') {
+                    switch (arrow) {
+                        case 37:
+                            this.pace = -1; // left
+                            this.direction = 'horizontal';
+                            break;
+                        case 39:
+                            this.pace = 1; // right
+                            this.direction = 'horizontal';
+                            break;
+                    }
+                }
+                // 实现按键加速，并修正原地掉头bug
+                this.move(_stage, food);
             }
-        }
 
-        this.move = function(_stage, food){
-            let last = this.body.length - 1;
-            // 先挪身子
-            for(let i = last; i > 0; i--){
-                this.body[i].x = this.body[i-1].x;
-                this.body[i].y = this.body[i-1].y;
-                this.body[i].show(_stage);
+            this.show = function (_stage) {
+                for (let i = 0; i < this.body.length; i++) {
+                    this.body[i].show(_stage);
+                }
             }
-            // 根据方向挪头
-            if(this.direction === 'horizontal'){
-                this.body[0].x += this.pace;
-            }else if(this.direction === 'vertical'){
-                this.body[0].y += this.pace;
-            }
-            this.body[0].show(_stage);
 
-            // *********************成长属性******************//
-            // 吃食物
-            if(this.body[0].x === food.x && this.body[0].y === food.y){
-                this.body.push(new Cell(this.body[last].x, this.body[last].y, SNAKE_COLOR));
-                food.show(_stage);
-            }
-            // 关卡升级
-            updateLevel(this);
+            this.move = function (_stage, food) {
+                let last = this.body.length - 1;
+                // 先挪身子
+                for (let i = last; i > 0; i--) {
+                    this.body[i].x = this.body[i - 1].x;
+                    this.body[i].y = this.body[i - 1].y;
+                    this.body[i].show(_stage);
+                }
+                // 根据方向挪头
+                if (this.direction === 'horizontal') {
+                    this.body[0].x += this.pace;
+                } else if (this.direction === 'vertical') {
+                    this.body[0].y += this.pace;
+                }
+                this.body[0].show(_stage);
 
-            // *********************死亡属性*******************//
-            // 撞墙
-            if(this.body[0].x < 0 || this.body[0].x > CELL_NUM_X - 1 || this.body[0].y < 0 || this.body[0].y > CELL_NUM_Y - 1){
-                GameTips("GAME OVER");
-            }
-            // 撞自己
-            for(let i = 1; i < last; i ++){
-                if(this.body[i].x === this.body[0].x && this.body[i].y === this.body[0].y){
+                // *********************成长属性******************//
+                // 吃食物
+                if (this.body[0].x === food.x && this.body[0].y === food.y) {
+                    this.body.push(new Cell(this.body[last].x, this.body[last].y, SNAKE_COLOR));
+                    food.show(_stage);
+                }
+                // 关卡升级
+                updateLevel(this);
+
+                // *********************死亡属性*******************//
+                // 撞墙
+                if (this.body[0].x < 0 || this.body[0].x > CELL_NUM_X - 1 || this.body[0].y < 0 || this.body[0].y > CELL_NUM_Y - 1) {
                     GameTips("GAME OVER");
                 }
+                // 撞自己
+                for (let i = 1; i < last; i++) {
+                    if (this.body[i].x === this.body[0].x && this.body[i].y === this.body[0].y) {
+                        GameTips("GAME OVER");
+                    }
+                }
             }
         }
-    }
 
-    // DOM element
-    let frame = document.getElementById("stage");
-    let gameOver = document.getElementById("gameover");
-    // 游戏逻辑
-    var stage = new Stage(frame);
-    var food = new Food();
-    var snake = new Snake();
-    GameInit();
+        // DOM element
+        let frame = document.getElementById("stage");
+        let gameOver = document.getElementById("gameover");
+        // 游戏逻辑
+        var stage = new Stage(frame);
+        var food = new Food();
+        var snake = new Snake();
+        GameInit();
 
-    var timer; // 定时器
-    var speed = SPEED_INIT; // 速度
+        var timer; // 蛇蛇移动定时器
+        var speed = SPEED_INIT; // 速度
+        var gameOverFlag = false; // 结束标志
 
-    // 游戏开始
-    function Start(_speed){
-        timer = window.setInterval('snake.move(stage._stage, food)', _speed);
-    }
-    // 游戏暂停
-    function Pause(){
-        window.clearInterval(timer);
-    }
-    // 游戏结束
-    function GameTips(tips){
-        Pause();
-        gameOver.innerHTML = tips;
-    }
-    // 重玩
-    function GameInit() {
-        gameOver.innerHTML = "";
-        snake.init();
-        snake.show(stage._stage);
-        food.show(stage._stage);
-        updateLevel(snake);
-    }
-    // 更新关卡
-    function updateLevel(_snake){
-        let level = Math.floor(_snake.body.length / LEVEL_PACE);
-        document.getElementById("level").innerHTML = "关卡:" + level + "<br/>" + "得分:" + (_snake.body.length - SNAKE_LENGTH_INITIAL);
-        if(level === LEVEL_MAX){
-            // victory
-            GameTips("VERY GOOD");
-        } else {
-            // 速度
-            speed = SPEED_INIT - level * SPEED_PACE;
+        // 游戏开始
+        function Start(_speed) {
+            if (!gameOverFlag) {
+                timer || (timer = window.setInterval('snake.move(stage._stage, food)', _speed));
+                document.onkeydown = handleKeydown;
+            }
         }
-    }
-
-    // 监听方向箭头
-    document.onkeydown = function(){
-        if(window.event){
-            arrow = window.event.keyCode;
-        }else{
-            arrow = event.keyCode;
+        // 游戏暂停
+        function Pause() {
+            if (!gameOverFlag) {
+                window.clearInterval(timer);
+                timer = undefined;
+                document.onkeydown = undefined;
+            }
         }
-        snake.setDirection(arrow);
-    }
+        // 游戏结束
+        function GameTips(tips) {
+            Pause();
+            gameOver.innerHTML = tips;
+            gameOverFlag = true;
+        }
+        // 重玩
+        function GameInit() {
+            Pause();
+            gameOver.innerHTML = "";
+            snake.init();
+            snake.show(stage._stage);
+            food.show(stage._stage);
+            updateLevel(snake);
+            gameOverFlag = false;
+        }
+        // 更新关卡
+        function updateLevel(_snake) {
+            let level = Math.floor(_snake.body.length / LEVEL_PACE);
+            document.getElementById("level").innerHTML = "关卡:" + level + "<br/>" + "得分:" + (_snake.body.length - SNAKE_LENGTH_INITIAL);
+            if (level === LEVEL_MAX) {
+                // victory
+                GameTips("VERY GOOD");
+            } else {
+                // 速度
+                speed = SPEED_INIT - level * SPEED_PACE;
+            }
+        }
+
+        // 监听方向箭头
+        function handleKeydown() {
+            if (window.event) {
+                arrow = window.event.keyCode;
+            } else {
+                arrow = event.keyCode;
+            }
+            snake.setDirection(arrow, stage._stage, food)
+        }
 
     </script>
 </body>
+
 </html>
         
       </div>
@@ -781,7 +812,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -802,9 +833,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -827,11 +856,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

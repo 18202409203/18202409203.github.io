@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clock</title>
+    <script src="Clock.js"></script>
+</head>
+
+<body style="text-align: center;">
+    <style>
+        #canvas {
+            width: 100%;
+            height: 650px;
+            background: black;
+            color: #fff;
+        }
+    </style>
+    <div id="canvas"></div>
+    <script>
+        var option = {
+            containerId: "canvas",
+            formatterMonth: d => d,
+            formatterDay: d => d,
+            formatterWeek: d => d === 0 ? 7 : d,
+            formatterHour: d => d,
+            formatterMinute: d => d,
+            formatterSecond: d => d,
+            gap: 50,
+            freshTime: 500,
+            currentColor: 'red',
+            rotateText: false,
+            randomColor: true
+        }
+        new Clock(option).run();
+    </script>
+</body>
+
+</html>
